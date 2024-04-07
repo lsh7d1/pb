@@ -2,17 +2,10 @@ syntax = "proto3";
 
 package leaf.v1;
 
-import "google/api/annotations.proto";
-
 option go_package = "api/leaf/v1;v1";
 
 service LeafSegmentService {
-    rpc GetSegmentId(GenIdsRequest) returns (GenIdsResponse) {
-        option (google.api.http) = {
-            get: "/api/segment/get/{bizTag}"
-            response_body: "ids"
-        };
-    }
+    rpc GetSegmentId(GenIdsRequest) returns (GenIdsResponse) {}
 }
 
 message GenIdsRequest {
