@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package leaf.v1;
+
+import "google/api/annotations.proto";
+
+option go_package = "api/leaf/v1;v1";
+
+service LeafSegmentService {
+    rpc GetSegmentId(GenIdsRequest) returns (GenIdsResponse) {
+        option (google.api.http) = {
+            get: "/api/segment/get/{bizTag}"
+            response_body: "ids"
+        };
+    }
+}
+
+message GenIdsRequest {
+    string bizTag = 1;
+    int32 count = 2;
+}
+
+message GenIdsResponse {
+    repeated int64 ids = 1;
+}
